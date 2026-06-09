@@ -82,7 +82,7 @@ function winnerChoice(computerChoice, humanChoice) {
 
 //Eliminatied repetition
 function winnerChoice2(computerChoice,humanChoice) {
-    console.log(`winnerChoice console ${computerChoice} ${humanChoice}`);
+    // console.log(`winnerChoice console ${computerChoice} ${humanChoice}`);
     if (computerChoice === humanChoice){
         return 'draw';
     }
@@ -117,8 +117,8 @@ let computerScore = 0;
 
 
 function playRound(computerChoice, humanChoice) {
-    const winner = winnerChoice(computerChoice, humanChoice);
-    console.log(`winner console ${winner}`);
+    const winner = winnerChoice2(computerChoice, humanChoice);
+    // console.log(`winner console ${winner}`);
     declareWinner(winner);
     if (winner === 'human'){
         humanScore++;
