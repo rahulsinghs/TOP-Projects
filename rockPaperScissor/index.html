@@ -1,15 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RockPaperScissor</title>
-    
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <h1>Rock Paper Scissor</h1>
-    <h2>open console with f12 or ctrl+shift+i</h2>
-    <p>in console type playGame() to start the game and enter 'rock' or 'paper' or 'scissor' in prompt</p>
-    <script src="./app.js"></script>
+    <div id="wrapper">
+        <h1>Rock Paper Scissor</h1>
+        <label for="no__of__matches">Best of </label>
+        <select name="no__of__matches" id="no__of__matches">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="9">9</option>
+        </select>
+        <button id='startBtn' class="startBtn--default">Start</button>
+        <button id='resetBtn' class="resetBtn--default">Reset</button>
+        <p>Player select your thing:</p>
+        <div id="choices">
+            <button id="rock" class="choice rock--default">Rock</button>
+            <button id="paper" class="choice paper--default">Paper</button>
+            <button id="scissor" class="choice scissor--default">Scissor</button>
+        </div>
+        <div id="gameStatus" class="gameStatus"></div>
+
+
+        <section class="scoreboard">
+            <div class="scoreboard__text">Scoreboard</div>
+
+            <div class="board__frame">
+
+                <div class="players__header">
+                    <div class="player">Player</div>
+                    <div class="computer">Computer</div>
+                </div>
+
+                <div class="score__display">
+                    <div class="player__score">0</div>
+                    <div class="colon">:</div>
+                    <div class="computer__score">0</div>
+                </div>
+
+                <div class="digital__timer"><span class="mins">00</span>
+                    <span class="timer__colon">:</span>
+                    <span class='secs'>00</span>
+                </div>
+
+                <div class="lead__display">
+                    <span class="lead__text">Lead</span>
+                    <span class="colon">:</span>
+                    <span class="leader"></span>
+                </div>
+            </div>
+        </section>
+        <div class="bottom-message"></div>
+
+        <ul id="rounds"></ul>
+
+        <div id="declare__winner"></div>
+
+        <script src="./app.js"></script>
+    </div>
 </body>
+
 </html>

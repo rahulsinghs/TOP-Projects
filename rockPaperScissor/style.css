@@ -1,0 +1,205 @@
+:root {
+    --padding__scorecard : 10px;
+    --block__height : 32px;
+}
+
+* {box-sizing: border-box;}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: relative; /* Acts as an anchor for the absolute wrapper */
+}
+
+/* 2. Position and center the wrapper */
+#wrapper {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* #wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.choice {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+
+/*default color or start and stop button */
+.startBtn--default, .stopBtn--default {
+    background-color: initial;
+}
+
+.startBtn--active {
+    background-color: green;
+}
+
+.stopBtn--active {
+    background-color: red;
+}
+
+/*default states*/
+.rock--default, .paper--default, .scissor--default {
+    background-color: #dddddd;
+}
+
+/*active states*/
+.rock--active, .paper--active, .scissor--active {
+    background-color: greenyellow;
+}
+
+/*deactive state*/
+.rock--deactive, .paper--deactive, .scissor--deactive {
+    background-color: grey;
+}
+
+
+/*game status*/
+.gameStatus {
+    padding:1rem;
+    font-size: 1rem;
+    color: blueviolet;
+}
+
+
+/*-----------------------------------*/
+
+/*scoreboard*/
+
+.scoreboard {
+    background-color: rgb(242, 117, 138);
+    width: 250px;
+    text-align: center;
+}
+
+/*scoreboard text*/
+.scoreboard__text {
+    height: var(--block__height);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(70, 15, 15);
+    border: 2px solid yellowgreen;
+}
+
+.scoreboard .scoreboard__text {
+    text-align: center;
+}
+
+.board__frame {
+    display: flex;
+    flex-direction: column;
+}
+
+.players__header {    
+    display: flex;
+    justify-content: center;
+    border: 2px solid yellowgreen;    
+}
+
+.player, .computer {
+    background-color: pink;
+    align-content: center;
+    width: calc(30% + 8px);
+    height: var(--block__height);
+    border: 3px solid white;
+
+}
+
+.score__display {
+    display: flex;
+    /* background-color: brown; */
+    height: var(--block__height);
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellowgreen;
+}
+
+.player__score {
+    width: 30%;
+    color: white;
+    font: 1.3rem bold;
+    align-content: center;
+    height: var(--block__height);
+    background-color: red;
+}
+
+.colon {
+    width: 16px;
+    align-content: center;
+    height: var(--block__height);
+    background-color: yellowgreen;
+}
+
+.computer__score {
+    width: 30%;
+    color: white;
+    font: 1.3rem bold;
+    height: var(--block__height);
+    align-content: center;
+    background-color: rgb(80, 117, 239);
+    
+}
+
+.digital__timer {
+    justify-content: center;
+    display: flex;
+    height: var(--block__height);
+    align-items: center;
+    gap: 8px;
+    background-color:violet ;
+    border: 2px solid yellowgreen;
+}
+
+.lead__display{
+    display: flex;
+    align-items: center;
+    height: var(--block__height);
+}
+
+.lead__text {
+    flex: 1;
+    margin-left: 20%;
+    font-weight: bold;
+}
+
+.lead__display.colon {
+    padding: 0 8px;
+    text-align: center;
+}
+
+.leader {
+    min-width: 47%;
+    flex: 1;
+}
+
+/*game state*/
+#declare__winner .game__end {
+    margin-top: 15px;
+    padding: .2rem;
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+}
+
+/* :disabled button cursor feedback */
+button:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+

@@ -5,3 +5,9 @@
 - Next attempt was using || 'or' for choosing winner between rock,paper, scissor (the idea was not mine,it was with a reference)
 - could have imporved other things but have left for next
 - Hopefully would improve in next project of Rock Paper Scissor
+
+## Second attempt
+- took time but it was a learning experience
+- Imporved the game logic
+- added bit of UI
+- Added interactivity 
