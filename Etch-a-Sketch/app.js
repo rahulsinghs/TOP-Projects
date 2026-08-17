@@ -1,9 +1,9 @@
 const container = document.querySelector('#container');
 const btnSides = document.querySelector('#sides');
 const colorPicker = document.querySelector('#color-picker');
-const btnRainbow = document.querySelector('btn-rainbow');
-const btnEraser = document.querySelector('btn-eraser');
-const btnClear = document.querySelector('btn-clear');
+const btnRainbow = document.querySelector('#btn-rainbow');
+const btnEraser = document.querySelector('#btn-eraser');
+const btnClear = document.querySelector('#btn-clear');
 
 let currentSize = 16;
 let currentMode = 'color'; //'color' 'rainbow' or 'erase'
@@ -16,40 +16,53 @@ window.addEventListener('mouseup', () => isDrawing = false);
 
 createDiv(currentSize);
 
-//number of sides
-//make 16*16 grid aligned(dont use grid only flex) boxes
-/* let i = 1;
-for(i = 1; i <= currentSize*currentSize; i++){
-    const div = document.createElement('div');
-    div.classList.add('boxes', `box${i}`);
-    // div.textContent = `box${i}`;
-    container.appendChild(div);
-} */
+function updateMode(newMode){
+    currentMode = newMode;
+}
 
-/* container.addEventListener('mouseover', (e)=> {
-    if(e.target.classList.contains('boxes')){
-        e.target.style.backgroundColor = 'pink';
-    }
+colorPicker.addEventListener('input', (e) => {
+    updateMode('color');
+} )
+
+btnRainbow.addEventListener('click',(e)=> {
+    updateMode('rainbow');
 })
 
-container.addEventListener('mouseout', (e)=> {
-    if(e.target.classList.contains('boxes')){
-        e.target.style.backgroundColor = 'yellow';
+btnEraser.addEventListener('click', (e) => {
+    updateMode('eraser');
+    // console.log("I have seletect eraser");
+})
+
+//completely clear the cells 
+btnClear.addEventListener('click', (e) => {
+    if(num === undefined){
+        createDiv(currentSize);
+    }else{
+        createDiv(num);
     }
-}) */
+    
+})
 
 
 container.addEventListener('pointerover', (e)=> {
-    if(isMouseDown && e.target.classList.contains('boxes')){
-        e.target.classList.add('is-active');
+    if(e.target.classList.contains('boxes')){
+        if(currentMode === 'color'){
+            e.target.style.backgroundColor = colorPicker.value;
+        }else if(currentMode === 'rainbow'){
+            let r = Math.floor(Math.random()*255);
+            let g = Math.floor(Math.random()*255);
+            let b = Math.floor(Math.random()*255);
+            // console.log(`random r:${r} g:${g} b:${b}`);
+            e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            
+        }else if(currentMode === 'eraser'){
+            // console.log("current mode is earaser");
+            e.target.style.backgroundColor = '#ffffff';           
+        }
+        
     }
 })
 
-// container.addEventListener('pointerout', (e)=> {
-//     if(e.target.classList.contains('boxes')){
-//         e.target.classList.remove('is-active');
-//     }
-// })
 
 
 btnSides.addEventListener('click', (e)=>{
@@ -73,8 +86,9 @@ btnSides.addEventListener('click', (e)=>{
 
 })
 
-
+//function to crate the cells
 function createDiv(num){
+    container.innerHTML = "";
     for(let i = 1; i<=num*num; i++){
         let div = document.createElement('div');
         div.classList.add('boxes', `box${i}`);
