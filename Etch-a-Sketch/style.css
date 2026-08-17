@@ -5,18 +5,21 @@
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 960px;
+    width: 90vmin;
+    height: 90vmin;
+    --grid-size: 16;
 }
 
 .boxes {
+    box-sizing: border-box;
     aspect-ratio: 1 / 1;
-    flex: 0 0 6.25%;
+    flex: 0 0 calc(100% / var(--grid-size));
     align-content: center; 
     /*use align-content and text-align when boxes are not flex or grid*/
     text-align: center;
-    width: 60px;
-    height: 60px;
-    border: 2px solid salmon;
+    min-width: 0;
+    min-height: 0;
+    border: 0.01rem solid rgb(226, 226, 226);
 }
 
 .is-active {
@@ -24,6 +27,6 @@
 }
 
 /* button for number of sides */
-#sides {
+button {
     height: 2rem;
 }
