@@ -8,18 +8,17 @@
 </head>
 <body>
     <div id="controls">
-        <button id="sides" type="button">Sides</button>
+        <button id="sides" type="button" class="mode-btn">Sides</button>
         <input type="color" id="color-picker" value="#333333">
-        <button type="button" id="btn-rainbow">Rainbow</button>
-        <button id="btn-eraser">Eraser</button>
-        <button id="btn-clear">Clear</button>
+
+        <button type="button" id="btn-rainbow" class="mode-btn" aria-pressed="false">Rainbow</button>
+        <button type="button" id="btn-shade" class="mode-btn" aria-pressed="false">Shade</button>
+        <button type="button" id="btn-eraser" class="mode-btn" aria-pressed="false">Eraser</button>
+        <button type="button" id="btn-clear" class="mode-btn">Clear</button>
     </div>
     
     <div id="container"></div>
     
-
-
-
     <script src="app.js"></script>
 </body>
 </html>
