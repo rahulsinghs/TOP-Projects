@@ -13,7 +13,12 @@
     width: 90vmin;
     height: 90vmin;
     border: 1px solid #ccc;
-    pointer-events: none;
+    pointer-events: auto;
+    user-select: none;
+}
+
+#controls {
+    margin-bottom: 0.5rem;
 }
 
 .boxes {
