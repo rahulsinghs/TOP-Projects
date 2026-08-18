@@ -92,10 +92,22 @@ function shadeCell(cell){
 }
 
 //==== drawing events ======
-container.addEventListener('pointerdown',paint);
+
+//prevent the default browser image/elent drag-and-drop behavior
+container.addEventListener('dragstart', (e) => e.preventDefault());
+
+container.addEventListener('pointerdown',(e) => {
+    isDrawing = true;
+    paint(e);
+});
 container.addEventListener('pointerenter', (e) =>{
     if(isDrawing) paint(e);
-})
+},true);
+
+container.addEventListener('pointerleave', () => {
+    isDrawing = false;
+});
+
 
 //===== Resize grid ===========
 btnSides.addEventListener('click', () => {
