@@ -1,0 +1,91 @@
+:root {
+    --border_color: rgb(171, 209, 242);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====== heading ========= */
+h1 {
+    margin-top: 1rem;
+    text-align: center;
+    color: darkmagenta;
+}
+
+.head_text {
+    color: hsl(200, 82%, 24%);
+}
+
+/* ===== calculator UI ========== */
+.main_body {
+    display: flex;
+    height: clamp(300px, 60vh, 600px);
+    width: clamp(400px, 60vw, 500px);
+    background-color: rgb(229, 224, 218);
+    margin: 1rem auto;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;    
+}
+
+.display_screen {
+    padding: 0.5rem;
+    border: 2px solid var(--border_color);
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 0 0 15%;
+    font-size: xx-large;
+}
+
+.display_screen .previous {
+    font-size: medium;
+}
+
+.keypad {
+    display: flex;
+    flex: 1;
+}
+
+.numbers{
+    display: flex;
+    flex-wrap:wrap;
+    flex: 3;
+    gap: 10px;
+    background-color: aliceblue;
+    border: 2px solid var(--border_color);
+}
+
+.numbers button {
+    font-size: 2rem;
+    flex: 1 0 25%;
+    /* aspect-ratio: 1 / 1; */
+}
+
+
+.calculation_area {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: rgb(203, 223, 173);
+    border: 2px solid var(--border_color);
+    gap: 5px;
+    padding: 5px;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    flex: 3;
+    gap: 5px;
+}
+
+.btn, .ac,.equalto {
+    flex: 1;
+}
+
