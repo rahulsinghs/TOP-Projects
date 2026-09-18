@@ -36,12 +36,20 @@ function update_display(){
 }
 
 function handle_number(num){
-    if(calculator.display_value === '0' && calculator.is_result !== true){
+    //handle if number is pressed after equalto a new number would start
+    if(calculator.display_value === '0' && calculator.is_result !== true && calculator.num_container !== ""){
+        current_display.textContent += num; //if the display is '0' this displays the new value 
+        calculator.display_value = num; //assigns the display value in calculator object
+        calculator.num_container += num;
+        //handle when first encounter a digit
+    }else if(calculator.display_value === '0' && calculator.is_result !== true && calculator.num_container === ""){
         current_display.textContent = num; //if the display is '0' this displays the new value 
         calculator.display_value = num; //assigns the display value in calculator object
         calculator.num_container = num;
-
-    }else if(calculator.is_result === true){
+        //after equalto is pressed
+    }else if(calculator.is_result === true && calculator.is_equalto === true && calculator.result !== null){
+        all_clear();
+        calculator.num_container = num;
         current_display.textContent = num;
         calculator.num_container = num;
         calculator.is_result = false;
@@ -68,13 +76,21 @@ function handle_number(num){
     calculator.b = parseInt(num);
 }
  */
-function add_decimal(){};
+function add_decimal(){
+    console.log("pending");
+};
 
 function handle_ops(ops){
+    //if first operator and second operator are present dont take any other operator
     if(calculator.first_operator !== null && calculator.sec_operator !== null ){
         console.log('nothing here go back');
         return;
     }
+    //first operator not null and result true means we have result and first operator 12+25(- this becomes first opr) so can calculate
+    if(calculator.first_operator !== null && calculator.is_result === true ){
+        current_display.textContent += ops;
+    }
+
     if(calculator.first_operator !== null && calculator.is_result === true){
         return;
     }
@@ -86,7 +102,7 @@ function handle_ops(ops){
         calculator.num_container = "";
     }
     else if(calculator.first_operator !== null && calculator.sec_operator === null){
-        console.log("mike check");
+        console.log("mike check"); // :) just a test
         calculator.sec_operator = ops;
         calculator.b = parseFloat(calculator.num_container);
         calculator.num_container = "";
@@ -128,6 +144,7 @@ function all_clear(){
     calculator.b = 0;
     calculator.result = null;
     calculator.is_result = false;
+    calculator.num_container = "";
 };
 
 //addEventListener's 
