@@ -17,8 +17,8 @@
 }
 .container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 1fr;
     border: 1px solid black;
     font-family: 'my-font', sans-serif;
     background-color: rgb(218, 218, 218);
@@ -28,7 +28,7 @@
 
 aside {
     grid-column: 1 / 2;
-    grid-row: 1 / 3;
+    grid-row: 1/3;
     border: 1px solid rgb(31, 42, 248);
     background-color: rgb(64, 126, 165);
     color: white;
@@ -282,7 +282,7 @@ main {
 main {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto;
     gap: 1rem;
 }
 
@@ -291,13 +291,15 @@ main {
 }
 .projects {
     grid-column: 1 / 2;
-    grid-row: span 2;
+    grid-auto-flow: column;
+    /* grid-auto-rows: auto; */
+    /* grid-row: auto; */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.anouncements {
+.announcements {
     grid-column: 2/3;
 
 }
@@ -336,6 +338,13 @@ main {
 
 /* -------- Announcements ----------- */
 
+.right-main-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
+
 .announcements {
     display: flex;
     flex-direction: column;
@@ -346,12 +355,20 @@ main {
 .announcements-card {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 1rem;
 }
 
 
 
 /* ----- trending -------- */
+
+.trending-container, .announcements-card, .project-card {
+    /* border: 1px solid grey; */
+    background-color: rgb(235, 235, 235);
+    border-radius: 0.5rem;
+    box-shadow: 2px 3px 3px grey;
+    padding: 1.5rem;
+}
 
 .trending h2{
     margin-bottom: 0.6rem;
@@ -360,21 +377,18 @@ main {
 .trending-name-container {
     display: flex;
     gap: 1rem;
-    padding: 0.6rem;
+    padding: 0.3rem;
 }
 .inner-name{
     display: flex;
     flex-direction: column;
+    gap:0.2rem;
+    .name{
+        font-weight: 600;
+    }
 }
 
 
-.trending-container, .announcements-card, .project-card {
-    /* border: 1px solid grey; */
-    background-color: rgb(235, 235, 235);
-    border-radius: 0.5rem;
-    box-shadow: 2px 3px 3px grey;
-    padding: 0.5rem;
-}
 
 /* ----- Aside ------- */
 aside {
