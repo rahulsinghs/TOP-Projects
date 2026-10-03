@@ -5,6 +5,7 @@
 
 :root {
     --container-padding: 1.5rem;
+    --container-title-size: 1.2rem;
 }
 
 @font-face {
@@ -216,13 +217,15 @@ main {
     gap: 1rem;
 }
 
+.projects h2, .announcements h2,.trending h2 {
+    font-size: var(--container-title-size);
+}
 .projects {
     grid-column: 1 / 2;
     grid-row: span 2;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
 }
 
 .anouncements {
@@ -266,6 +269,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    font-size: small;
+}
+
+.announcements-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 
@@ -289,4 +299,16 @@ main {
     border-radius: 0.5rem;
     box-shadow: 2px 3px 3px grey;
     padding: 0.5rem;
+}
+
+/* ----- Aside ------- */
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.nav-list {
+    font-size: var(--container-title-size);
 }
