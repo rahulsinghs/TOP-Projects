@@ -5,8 +5,8 @@ const calculator = {
     negative_num: false,
     first_operator: null,
     sec_operator:null,
-    a: 0,
-    b: 0,
+    a: null,
+    b: null,
     result: null,
     is_result: false,
     is_equalto: false
@@ -41,12 +41,15 @@ function handle_number(num){
         current_display.textContent += num; //if the display is '0' this displays the new value 
         calculator.display_value = num; //assigns the display value in calculator object
         calculator.num_container += num;
+
         //handle when first encounter a digit
     }else if(calculator.display_value === '0' && calculator.is_result !== true && calculator.num_container === ""){
         current_display.textContent = num; //if the display is '0' this displays the new value 
         calculator.display_value = num; //assigns the display value in calculator object
         calculator.num_container = num;
-        //after equalto is pressed
+        
+        //after equalto is pressed and then any number is pressed before any operator
+        //it resets and starts fresh
     }else if(calculator.is_result === true && calculator.is_equalto === true && calculator.result !== null){
         all_clear();
         calculator.num_container = num;
@@ -60,47 +63,35 @@ function handle_number(num){
     } 
 };
 
-/* function isolate_num(str){
-    let ops = ['+', '-', '*', '/', '%'];
-    console.log(`this is inside isolate func ${str}`);
-    let index = -1;
-    for(let op of ops){
-        const pos = str.indexOf(op);
-        if(pos != -1){
-            index = pos;
-            break;
-        }
-    };
-    let num = str.slice(index + 1);
-    console.log(`num is ${num}`);
-    calculator.b = parseInt(num);
-}
- */
+
 function add_decimal(){
     console.log("pending");
 };
 
 function handle_ops(ops){
+
     //if first operator and second operator are present dont take any other operator
     if(calculator.first_operator !== null && calculator.sec_operator !== null ){
         console.log('nothing here go back');
         return;
     }
-    //first operator not null and result true means we have result and first operator 12+25(- this becomes first opr) so can calculate
-    if(calculator.first_operator !== null && calculator.is_result === true ){
-        current_display.textContent += ops;
-    }
 
-    if(calculator.first_operator !== null && calculator.is_result === true){
+    //if (a) and first operator is present and (b) is not present or assigned  
+    if(calculator.first_operator !== null && calculator.a !== null && calculator.b=== null){
+
+        calculator.first_operator = ops;
         return;
     }
+    
 
+    //when the first operator is pressed  
     if(calculator.first_operator === null){
         calculator.first_operator = ops;
         current_display.textContent += calculator.first_operator;
         calculator.a = parseFloat(calculator.num_container);
         calculator.num_container = "";
     }
+    //when first operator is not null and sec operator is null, ready to take second operator
     else if(calculator.first_operator !== null && calculator.sec_operator === null){
         console.log("mike check"); // :) just a test
         calculator.sec_operator = ops;
@@ -114,8 +105,19 @@ function handle_ops(ops){
         calculator.first_operator = ops;
         calculator.sec_operator = null;
     }
+
+    //after result first operator not null and result true means we have result and first operator 12+25(- this becomes first opr) so can calculate
+    if(calculator.first_operator !== null && calculator.is_result === true && calculator.result !== null){
+        calculator.a = calculator.result;
+        current_display.textContent += ops;
+        calculator.first_operator = ops;
+        calculator.is_result = false;
+        calculator.is_equalto = false;
+        calculator.result = null;
+    }
     
 };
+
 function handle_equalto(){
     if(calculator.first_operator === null || calculator.first_operator === null ){
         console.log('nothing to handle equalto');
@@ -132,7 +134,9 @@ function handle_equalto(){
 };
 
 
-function delete_digit(){};
+function delete_digit(){
+    console.log('pending');
+};
 
 function all_clear(){
     current_display.textContent = '0';

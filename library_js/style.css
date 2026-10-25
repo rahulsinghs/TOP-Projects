@@ -56,6 +56,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     gap: 0.5rem;
     max-width: 30vw;
+    min-width: max(200px, 25%)
 }
 
 .book-details {
@@ -200,6 +201,7 @@ form.addBook-form{
     flex-direction: column;
     gap: 15px;
     padding: 16px;
+    min-width: 200px;
 }
 
 .form-group {
@@ -235,5 +237,8 @@ dialog .btn {
     font-family: sans-serif;
 }
 
+#title:required {
+    background-color: beige;
+}
 
 
