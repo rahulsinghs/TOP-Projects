@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-title">
+            <h1>My Library</h1>
+        </div>
+        <div class="search-container">
+            <label for="search_bar"></label>
+            <input type="search" placeholder="Search books" name="search_bar" class="search_bar" id="search_bar">
+        </div>
+        <button type="button" class="btn add_book-btn" id="add_book">Add a Book</button>
+    </header>
+
+    <main class="books-container" id="bookContainer"></main>
+
+    <ul class="book-grid">
+        <li class="book-list" data-id="1">
+            <article class="book-card">
+                <div class="card-top-accent"></div>
+                <header class="book-header">
+                    <h2 class="book-title"></h2>
+                </header>
+                <dl class="book-details">
+                    <div class="card-row author-row">
+                        <dt class="card-label">Author:</dt>
+                        <dd class="book-author"></dd>
+                    </div>
+                    <div class="card-row publishYear-row">
+                        <dt class="card-label">Publish Year:</dt>
+                        <dd class="publish-year"></dd>
+                    </div>
+                    <div class="card-row totalPages-row">
+                        <dt class="card-label">Total Page:</dt>
+                        <dd class="card-value total-pages"></dd>
+                    </div>
+                    <div class="card-row status-row">
+                        <dt class="card-label">Status:</dt>
+                        <dd class="card-value status"></dd>
+                    </div>
+                </dl>
+
+                <footer class="card-btn">
+                    <button type="button" class="btn-reset btn btn-toggle">Toggle Status</button>
+                    <button type="button" class="btn-reset btn btn-remove">Remove</button>
+                </footer>
+            </article>
+        </li>
+    </ul>
+
+
+
+
+
+ 
+
+    <dialog class="bookLibrary" id="bookDialog" >
+        <form method="dialog" class="addBook-form">
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="bookTitle" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="author">Author: </label>
+                <input type="text" id="author" name="bookAuthor" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <label for="totalPages">Total Pages: </label>
+                <input type="number" id="totalPages" name="totalPages" min="1" step="1" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <label for="publishYear">Year Published: </label>
+                <input type="number" id="publishYear" name="publishYear" min="1" max="3000" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <label for="read-status">Read Status</label>
+                <select id="read-status" name="readStatus" required>
+                    <!-- <option value="" selected disabled hidden>--Please read status of book--</option> -->
+                    <option value="Not Read" selected>Not Read</option>
+                    <option value="Read">Read</option>
+                    <option value="Ongoing">Ongoing</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn_book-add">Add</button>
+            </div>
+        </form>
+        <button type="button" class="btn close-btn">X</button>
+    </dialog>
+
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
