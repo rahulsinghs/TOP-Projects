@@ -6,6 +6,8 @@ const dialog = document.querySelector('.bookLibrary');
 // grab close button in dialog form
 const closeBtn = document.querySelector(".close-btn");
 
+const form = document.querySelector(".addBook-form");
+
 
 // dialog.showModal(); //in html <dialog open> does the almost same work, show the modal 
 //difference is that opent in HTML renders the dialog into normal document flow without blocking the background
@@ -43,9 +45,18 @@ function render_book() {
         const topAccent = document.createElement('div');
         topAccent.classList.add('card-top-accent');
         bookCard.prepend(topAccent);
+        
         const header = document.createElement('header');
         header.classList.add('book-header');
         bookCard.append(header);
+
+        //edit button
+        const editB = document.createElement("button");
+        editB.classList.add("btn-edit");
+        editImg = document.createElement("img");
+        editImg.setAttribute("src","img/pencil.svg");
+        editB.append(editImg);
+        bookCard.append(editB);
 
         //book header
         console.log(bookList);
@@ -169,6 +180,16 @@ function render_book() {
             e.target.closest(".book-list").remove();
             
         })
+
+        //send selected book for edit
+        editB.addEventListener('click',(e)=>{
+            let selectBook = bookList.getAttribute("data-id");
+            console.log(`book selected is ${selectBook}`);
+            let bookSelected = myLibrary.filter(book =>{
+                return book.id === selectBook;
+            })
+            editBook(bookSelected);
+        })
         
         //append the bookList to Grid
         bookGrid.append(bookList);
@@ -177,7 +198,16 @@ function render_book() {
 
 }
 
-
+function editBook(book){
+    console.table(book);
+    // console.log(`from function ${book[0]}`); this gives output just as [objet Object]
+    console.log(`from function`, book[0]);
+    console.log("from func book[1]" + book[0][1]);
+    book.forEach( (x) =>{
+        console.log(x);
+    })
+    dialog.showModal();
+}
 
 
 function Book({bookAuthor,bookTitle,totalPages,publishYear,readStatus}) {
@@ -197,7 +227,7 @@ function addBookToLibrary(bookData) {
     render_book(myLibrary);
 }
 
-const form = document.querySelector(".addBook-form");
+
 
 // let form_data= {};
 const cleanData = function(data){
@@ -217,9 +247,4 @@ form.addEventListener('submit', (e)=>{
     addBookToLibrary(dataObject);
     form.reset();
 })
-
-
-
-
-
 
