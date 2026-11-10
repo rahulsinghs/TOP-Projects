@@ -1,4 +1,6 @@
-
+// 1. work on toggle issue.the book status reverts to default when new book added
+//2. work on edit book
+//3. there seems an issue with the pencil icon when new book is added
 //grap add button for book
 const addBookBtn = document.querySelector('.add_book-btn');
 // grab dialog 
@@ -146,21 +148,25 @@ function render_book() {
         footer.prepend(toggleBtn);
 
         toggleBtn.addEventListener("click",(e)=>{
+            let id = book.id;
+            let curr_book = myLibrary.find(book=> book.id === id);
+            console.log(" current book selected ", curr_book);
             let card_status = status.innerText; //get card status
-            
+            console.log(id);
             let read_status_array = [ "Not Read", "Read", "Ongoing" ];
             let read_class_array = ["status-NotRead", "status-Read", "status-Ongoing"];
-            let btn_class_array = ["btn-NotRead", "btn-Read", "btn-Ongoing"]
+            let btn_class_array = ["btn-NotRead", "btn-Read", "btn-Ongoing"];
              
             let current_index = read_status_array.indexOf(card_status);
             //if current index is last move to start index or else go to next index;
             let moveNextIndx = current_index === read_status_array.length -1 ? 0 : current_index + 1;
-            status.innerText = read_status_array[moveNextIndx];
             topAccent.classList.remove(...read_class_array);
             topAccent.classList.add(`${read_class_array[moveNextIndx]}`);
             toggleBtn.classList.replace(btn_class_array[current_index],btn_class_array[moveNextIndx]);
-        
-
+            status.innerText = read_status_array[moveNextIndx];
+            if(curr_book){
+                curr_book.readStatus= read_status_array[moveNextIndx];
+            }
         })
 
         
@@ -202,11 +208,16 @@ function editBook(book){
     console.table(book);
     // console.log(`from function ${book[0]}`); this gives output just as [objet Object]
     console.log(`from function`, book[0]);
-    console.log("from func book[1]" + book[0][1]);
+    console.log(typeof(book));
+    const keys = Object.keys(book[0]);
+    console.log(keys);
     book.forEach( (x) =>{
-        console.log(x);
+        console.log(x.key);
     })
+    form.elements["title"].value = book[0].title;
     dialog.showModal();
+    
+    
 }
 
 
